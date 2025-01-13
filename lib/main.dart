@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mi_primera_app/screens/screens.dart';
+import 'package:mi_primera_app/services/auth/auth_service.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const AppState());
 }
 
 class AppState extends StatefulWidget {
@@ -17,7 +18,8 @@ class _AppStateState extends State<AppState> {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [],
+      providers: [ChangeNotifierProvider(create: (_) => AuthService())],
+      child: const MyApp(),
     );
   }
 }
@@ -31,7 +33,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'proyecto1',
-      initialRoute: 'login',
+      initialRoute: 'splash',
       routes: {
         '/': (_) => const HomeScreen(),
         'splash': (_) => const SplashScreen(),

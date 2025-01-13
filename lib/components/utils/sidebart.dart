@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mi_primera_app/screens/login/login_screen.dart';
 
 class SideBart extends StatelessWidget {
   const SideBart({super.key});
@@ -30,7 +31,11 @@ class SideBart extends StatelessWidget {
             leading: const Icon(Icons.login),
             title: const Text('Iniciar Sesion'),
             onTap: () {
-              print('presionado iniciar sesion');
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const LoginScreen(),
+                  ));
             },
           ),
           const Divider(
