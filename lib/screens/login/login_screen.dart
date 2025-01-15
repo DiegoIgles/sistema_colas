@@ -62,14 +62,12 @@ class _LoginForm extends StatelessWidget {
         children: [
           TextFormField(
             autocorrect: false,
-            keyboardType: TextInputType.emailAddress,
-            onChanged: (value) => loginForm.email = value,
+            onChanged: (value) => loginForm.matricula = value,
           ),
           const SizedBox(height: 30),
           TextFormField(
             autocorrect: false,
-            keyboardType: TextInputType.emailAddress,
-            onChanged: (value) => loginForm.password = value,
+            onChanged: (value) => loginForm.matricula = value,
             validator: (value) {
               if (value != null && value.length >= 8) return null;
               return 'la contraseña es demasiado corta';
@@ -82,7 +80,7 @@ class _LoginForm extends StatelessWidget {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),
               disabledColor: Colors.grey,
-              color: const Color.fromARGB(247, 81, 169, 242),
+              color: const Color.fromARGB(247, 10, 88, 76),
               elevation: 0,
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 80, vertical: 15),
@@ -103,7 +101,7 @@ class _LoginForm extends StatelessWidget {
                           Provider.of<AuthService>(context, listen: false);
 
                       String respuesta = await authService.login(
-                          loginForm.email, loginForm.password, 'movile');
+                          loginForm.matricula, 'movile');
 
                       if (respuesta == 'correcto') {
                         loginForm.isLoading = false;

@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.light().copyWith(
           scaffoldBackgroundColor: Colors.grey[100],
           appBarTheme: const AppBarTheme(
-              elevation: 0, color: Color.fromARGB(169, 0, 136, 255))),
+              elevation: 0, color: Color.fromARGB(175, 10, 88, 76))),
     );
   }
 }
