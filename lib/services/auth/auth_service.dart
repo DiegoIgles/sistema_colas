@@ -41,7 +41,7 @@ class AuthService extends ChangeNotifier {
       try {
         final response = await http.get(Uri.parse('${servidor.baseUrl}/user'),
             headers: {'Authorization': 'Bearer $token'});
-        print(response.body);
+        //print(response.body);
         _IsLoggerInd = true;
         _user = User.fromJson(jsonDecode(response.body));
         _token = token;
