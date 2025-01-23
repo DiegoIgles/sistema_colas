@@ -1,3 +1,4 @@
+export 'package:mi_primera_app/screens/centros_medicos/centros_medicos_screen.dart';
 export 'package:mi_primera_app/components/components.dart';
 export 'package:mi_primera_app/screens/login/login_screen.dart';
 export 'package:mi_primera_app/screens/login/home_screen.dart';

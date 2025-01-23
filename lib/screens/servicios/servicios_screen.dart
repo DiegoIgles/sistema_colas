@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mi_primera_app/components/utils/sidebart.dart';
 import 'package:mi_primera_app/models/servicio.dart';
+import 'package:mi_primera_app/screens/servicios/menu_screen.dart';
 import 'package:mi_primera_app/services/servicio/servicio_service.dart';
-import 'package:mi_primera_app/screens/laboratoriosLab/laboratoriosLab_screen.dart';
 
 class ServiciosScreen extends StatelessWidget {
   final int userId;
@@ -41,7 +41,8 @@ class ServiciosScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => SolicitarFichaLaboratorioScreen(),
+                        builder: (context) =>
+                            MenuScreen(servicioId: servicio.id),
                       ),
                     );
                   },
