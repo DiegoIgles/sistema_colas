@@ -10,7 +10,10 @@ class CentrosMedicosScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Centros Médicos'),
+        title: const Text(
+          'Centros Médicos',
+          style: TextStyle(color: Colors.white),
+        ),
       ),
       body: FutureBuilder(
         future: ServicioCentro().obtenerServiciosCentros(laboratorioId),
@@ -40,6 +43,10 @@ class CentrosMedicosScreen extends StatelessWidget {
               return ListTile(
                 title: Text(centroMedico.nombre),
                 subtitle: Text(centroMedico.direccion),
+                trailing: IconButton(
+                  icon: Icon(Icons.add_box),
+                  onPressed: () {},
+                ),
               );
             },
           );

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mi_primera_app/screens/serviciosLab/serviciosLab_screen.dart';
+import 'package:mi_primera_app/screens/screens.dart';
 
 class MenuScreen extends StatelessWidget {
-  final int servicioId; // Se pasa el servicioId al construir esta pantalla.
+  final int userId; // Se pasa el servicioId al construir esta pantalla.
 
-  const MenuScreen({super.key, required this.servicioId});
+  const MenuScreen({super.key, required this.userId});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class MenuScreen extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        ServiciosLabScreen(servicioId: servicioId),
+                        ServiciosScreen(userId: userId),
                   ),
                 );
               },

@@ -12,7 +12,10 @@ class ServiciosLabScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Laboratorios del Servicio'),
+        title: const Text(
+          'Laboratorios del Servicio',
+          style: TextStyle(color: Colors.white),
+        ),
       ),
       body: FutureBuilder<List<ServicioLab>>(
         future: ServicioLabApi().obtenerServicioslabPorServicio(servicioId),
@@ -43,7 +46,7 @@ class ServiciosLabScreen extends StatelessWidget {
                 title: Text(servicioLab.laboratorioNombre),
                 subtitle: Text('ID: ${servicioLab.laboratorioId}'),
                 trailing: IconButton(
-                  icon: const Icon(Icons.medical_services),
+                  icon: const Icon(Icons.add_box),
                   onPressed: () {
                     // Navegar a la pantalla de centros médicos pasando el ID del laboratorio
                     Navigator.push(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mi_primera_app/screens/laboratorios/laboratorio_screen.dart';
 import 'package:mi_primera_app/screens/login/home_screen.dart';
 import 'package:mi_primera_app/screens/login/login_screen.dart';
-import 'package:mi_primera_app/screens/servicios/servicios_screen.dart';
+import 'package:mi_primera_app/screens/servicios/menu_screen.dart';
 import 'package:mi_primera_app/services/auth/auth_service.dart';
 import 'package:provider/provider.dart';
 
@@ -71,7 +71,7 @@ class SideBart extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ServiciosScreen(userId: userId),
+                        builder: (context) => MenuScreen(userId: userId),
                       ),
                     );
                   } else {
