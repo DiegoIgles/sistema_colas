@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mi_primera_app/components/utils/sidebart.dart';
 import 'package:mi_primera_app/models/servicio.dart';
-import 'package:mi_primera_app/screens/serviciosLab/serviciosLab_screen.dart';
+import 'package:mi_primera_app/screens/grupos/gruposLab_screen.dart';
 import 'package:mi_primera_app/services/servicio/servicio_service.dart';
 
 class ServiciosScreen extends StatelessWidget {
@@ -42,7 +42,7 @@ class ServiciosScreen extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            ServiciosLabScreen(servicioId: servicio.id),
+                            GruposPorServicioScreen(servicioId: servicio.id),
                       ),
                     );
                   },
