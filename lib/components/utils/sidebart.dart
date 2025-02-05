@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mi_primera_app/screens/laboratorios/laboratorio_screen.dart';
+import 'package:mi_primera_app/screens/reserva/misreservas_screen.dart';
 import 'package:mi_primera_app/screens/login/home_screen.dart';
 import 'package:mi_primera_app/screens/login/login_screen.dart';
 import 'package:mi_primera_app/screens/servicios/menu_screen.dart';
@@ -62,7 +62,7 @@ class SideBart extends StatelessWidget {
               ),
               ListTile(
                 leading: const Icon(Icons.add_alarm),
-                title: const Text('Mis servicios'),
+                title: const Text('Mis solicitudes'),
                 onTap: () {
                   // Verifica si el usuario está autenticado antes de pasar el userId
                   if (auth.authentificated) {
@@ -90,15 +90,30 @@ class SideBart extends StatelessWidget {
                 endIndent: 15,
               ),
               ListTile(
-                leading: const Icon(Icons.coronavirus_sharp),
-                title: const Text('Laboratorios'),
+                leading:
+                    const Icon(Icons.book_online), // Puedes cambiar el icono
+                title: const Text('Mis Reservas'),
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => LaboratorioScreen(),
-                    ),
-                  );
+                  // Verifica si el usuario está autenticado antes de navegar
+                  if (auth.authentificated) {
+                    int userId =
+                        auth.user.id; // Obtener el ID del usuario autenticado
+
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            MisReservasScreen(afiliadoId: userId),
+                      ),
+                    );
+                  } else {
+                    // Si el usuario no está autenticado, mostrar un mensaje o redirigir a login
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                          content: Text('Por favor, inicia sesión primero')),
+                    );
+                    // Aquí podrías navegar a la pantalla de inicio de sesión si es necesario
+                  }
                 },
               ),
               const Divider(

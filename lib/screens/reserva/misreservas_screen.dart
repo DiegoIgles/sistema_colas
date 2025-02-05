@@ -174,13 +174,23 @@ class _MisReservasScreenState extends State<MisReservasScreen> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 4.0),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             "$label ",
             style: const TextStyle(
-                fontWeight: FontWeight.bold, color: Colors.teal),
+              fontWeight: FontWeight.bold,
+              color: Colors.teal,
+            ),
           ),
-          Text(value),
+          Expanded(
+            // Permite que el texto largo se ajuste
+            child: Text(
+              value,
+              overflow: TextOverflow.ellipsis, // Corta el texto si es muy largo
+              maxLines: 2, // Permite que se muestre en 2 líneas antes de cortar
+            ),
+          ),
         ],
       ),
     );

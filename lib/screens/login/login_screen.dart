@@ -66,13 +66,13 @@ class _LoginForm extends StatelessWidget {
           ),
           const SizedBox(height: 30),
           TextFormField(
-            autocorrect: false,
-            onChanged: (value) => loginForm.matricula = value,
-            validator: (value) {
-              if (value != null && value.length >= 8) return null;
-              return 'la contraseña es demasiado corta';
-            },
-          ),
+              autocorrect: false,
+              onChanged: (value) => loginForm.matricula = value,
+              validator: (value) {
+                if (value != null && value.length >= 8) return null;
+                return 'la contraseña es demasiado corta';
+              },
+              obscureText: true),
           const SizedBox(
             height: 30,
           ),

@@ -5,8 +5,13 @@ import 'package:mi_primera_app/services/grupos/grupos_service.dart'; // Servicio
 
 class GruposPorServicioScreen extends StatelessWidget {
   final int servicioId;
+  final int userId; // Añadir userId aquí
 
-  const GruposPorServicioScreen({super.key, required this.servicioId});
+  const GruposPorServicioScreen({
+    super.key,
+    required this.servicioId,
+    required this.userId, // Recibir el userId aquí
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,10 +21,10 @@ class GruposPorServicioScreen extends StatelessWidget {
           'Grupos del Servicio',
           style: TextStyle(color: Colors.white),
         ),
+        backgroundColor: Colors.teal, // Color atractivo para la appBar
       ),
       body: FutureBuilder<List<Grupo>>(
-        future: ServicioGrupo().obtenerGruposPorServicio(
-            servicioId), // Usamos el servicio para obtener los grupos
+        future: ServicioGrupo().obtenerGruposPorServicio(servicioId), // Usamos el servicio para obtener los grupos
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
@@ -35,7 +40,10 @@ class GruposPorServicioScreen extends StatelessWidget {
 
           if (grupos.isEmpty) {
             return const Center(
-              child: Text('No hay grupos para este servicio.'),
+              child: Text(
+                'No hay grupos para este servicio.',
+                style: TextStyle(fontSize: 18, color: Colors.grey),
+              ),
             );
           }
 
@@ -43,30 +51,48 @@ class GruposPorServicioScreen extends StatelessWidget {
             itemCount: grupos.length,
             itemBuilder: (context, index) {
               final grupo = grupos[index];
-              return ListTile(
-                title: Text(grupo.nombre), // Mostramos el nombre del grupo
-                subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(height: 8),
-
-                    // Mostramos todos los laboratorios asociados a este grupo
-                    for (var laboratorio in grupo.laboratorios)
-                      Text('- ${laboratorio.nombre}'),
-                  ],
+              return Card(
+                margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+                elevation: 6,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
                 ),
-                trailing: IconButton(
-                  icon: const Icon(Icons.add_box),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => CentrosMedicosPorGrupoScreen(
-                          grupoId: grupo.id,
+                child: ListTile(
+                  contentPadding: const EdgeInsets.all(16),
+                  title: Text(
+                    grupo.nombre,
+                    style: const TextStyle(
+                        fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(height: 8),
+                      // Mostramos todos los laboratorios asociados a este grupo
+                      for (var laboratorio in grupo.laboratorios)
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 4),
+                          child: Text(
+                            '- ${laboratorio.nombre}',
+                            style: const TextStyle(fontSize: 16),
+                          ),
                         ),
-                      ),
-                    );
-                  },
+                    ],
+                  ),
+                  trailing: IconButton(
+                    icon: const Icon(Icons.arrow_forward_ios, color: Colors.teal),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CentrosMedicosPorGrupoScreen(
+                            grupoId: grupo.id,
+                            userId: userId,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
                 ),
               );
             },

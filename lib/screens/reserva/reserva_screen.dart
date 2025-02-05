@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mi_primera_app/services/reserva/reserva_service.dart'; // Importar tu servicio de reserva
-import 'package:mi_primera_app/screens/reserva/misreservas_screen.dart';
+import 'package:mi_primera_app/screens/reserva/misreservas_screen.dart'; // Importar tu servicio de reserva
 
 class ReservarCitacreen extends StatefulWidget {
   final int citaId;
@@ -65,13 +65,14 @@ class _ReservarCitacreenState extends State<ReservarCitacreen> {
                 TextButton(
                   onPressed: () {
                     Navigator.pop(context); // Cerrar el diálogo
+
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
                             MisReservasScreen(afiliadoId: widget.afiliadoId),
                       ),
-                    ); // Volver a la pantalla anterior
+                    );
                   },
                   child: const Text("Cerrar",
                       style: TextStyle(color: Colors.teal)),

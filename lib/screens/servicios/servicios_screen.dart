@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mi_primera_app/components/utils/sidebart.dart';
 import 'package:mi_primera_app/models/servicio.dart';
 import 'package:mi_primera_app/screens/grupos/gruposLab_screen.dart';
 import 'package:mi_primera_app/services/servicio/servicio_service.dart';
@@ -11,12 +10,12 @@ class ServiciosScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const SideBart(),
       appBar: AppBar(
         title: const Text(
           'Mis Solicitudes',
           style: TextStyle(color: Colors.white),
         ),
+        backgroundColor: Colors.teal, // Puedes cambiar el color de la appBar
       ),
       body: FutureBuilder<List<Servicio>>(
         future: ServicioApi().obtenerServiciosPorUsuario(userId),
@@ -31,21 +30,45 @@ class ServiciosScreen extends StatelessWidget {
             itemCount: servicios.length,
             itemBuilder: (context, index) {
               final servicio = servicios[index];
-              return ListTile(
-                title: Text('ID: ${servicio.id}'),
-                subtitle: Text(
-                    'Afiliado ID: ${servicio.afiliadoId}\nCreado: ${servicio.createdAt.toLocal()}'),
-                trailing: IconButton(
-                  icon: const Icon(Icons.add_box),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            GruposPorServicioScreen(servicioId: servicio.id),
+              return Card(
+                margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                elevation: 4,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: ListTile(
+                  contentPadding: const EdgeInsets.all(16),
+                  title: Text(
+                    'ID: ${servicio.id}',
+                    style: const TextStyle(
+                        fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Afiliado ID: ${servicio.afiliadoId}'),
+                      const SizedBox(height: 8),
+                      Text(
+                        'Creado: ${servicio.createdAt.toLocal().toString().split(' ')[0]}',
+                        style: const TextStyle(
+                            fontSize: 14, color: Colors.grey),
                       ),
-                    );
-                  },
+                    ],
+                  ),
+                  trailing: IconButton(
+                    icon: const Icon(Icons.add_box, color: Colors.teal),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => GruposPorServicioScreen(
+                            servicioId: servicio.id,
+                            userId: userId,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
                 ),
               );
             },
