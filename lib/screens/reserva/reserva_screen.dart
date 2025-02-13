@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:mi_primera_app/services/reserva/reserva_service.dart'; // Importar tu servicio de reserva
-import 'package:mi_primera_app/screens/reserva/misreservas_screen.dart'; // Importar tu servicio de reserva
+import 'package:mi_primera_app/screens/recomendaciones/recomendaciones_screen.dart'; // Importar tu servicio de reserva
 
 class ReservarCitacreen extends StatefulWidget {
   final int citaId;
-  final int afiliadoId; // El ID del usuario (afiliado)
+  final int afiliadoId;
+  final int servicioId; // El ID del usuario (afiliado)
 
   const ReservarCitacreen({
     Key? key,
     required this.citaId,
     required this.afiliadoId,
+    required this.servicioId,
   }) : super(key: key);
 
   @override
@@ -69,8 +71,10 @@ class _ReservarCitacreenState extends State<ReservarCitacreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) =>
-                            MisReservasScreen(afiliadoId: widget.afiliadoId),
+                        builder: (context) => RecomendacionesScreen(
+                          solservicioId: widget.servicioId,
+                          afiliadoId: widget.afiliadoId,
+                        ),
                       ),
                     );
                   },

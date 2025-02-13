@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mi_primera_app/models/servicio.dart';
-import 'package:mi_primera_app/screens/grupos/gruposLab_screen.dart';
+import 'package:mi_primera_app/screens/centros_medicos/centros_medicos_screen.dart';
 import 'package:mi_primera_app/services/servicio/servicio_service.dart';
 
 class ServiciosScreen extends StatelessWidget {
@@ -39,19 +39,19 @@ class ServiciosScreen extends StatelessWidget {
                 child: ListTile(
                   contentPadding: const EdgeInsets.all(16),
                   title: Text(
-                    'ID: ${servicio.id}',
+                    'Nro: ${servicio.id}',
                     style: const TextStyle(
                         fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Afiliado ID: ${servicio.afiliadoId}'),
+                      // Text('Afiliado ID: ${servicio.afiliadoId}'),
                       const SizedBox(height: 8),
                       Text(
                         'Creado: ${servicio.createdAt.toLocal().toString().split(' ')[0]}',
-                        style: const TextStyle(
-                            fontSize: 14, color: Colors.grey),
+                        style:
+                            const TextStyle(fontSize: 14, color: Colors.grey),
                       ),
                     ],
                   ),
@@ -61,7 +61,7 @@ class ServiciosScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => GruposPorServicioScreen(
+                          builder: (context) => CentrosMedicosScreen(
                             servicioId: servicio.id,
                             userId: userId,
                           ),

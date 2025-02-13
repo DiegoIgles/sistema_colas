@@ -33,7 +33,7 @@ class ReservaService {
         final Map<String, dynamic> responseData = jsonDecode(response.body);
 
         // Verificamos si la respuesta contiene la recomendación
-        print("Respuesta completa: $responseData");
+       // print("Respuesta completa: $responseData");
 
         return responseData; // Regresamos la respuesta completa
       } else {

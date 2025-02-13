@@ -1,13 +1,13 @@
 class Laboratorio {
-  int id;
-  String nombre;
+  final int id;
+  final String nombre;
 
-  Laboratorio({
-    required this.id,
-    required this.nombre,
-  });
+  Laboratorio({required this.id, required this.nombre});
 
-  Laboratorio.fromJson(Map<String, dynamic> json)
-      : id = json['id'],
-        nombre = json['nombre'];
+  factory Laboratorio.fromJson(Map<String, dynamic> json) {
+    return Laboratorio(
+      id: json['id'],
+      nombre: json['nombre'],
+    );
+  }
 }

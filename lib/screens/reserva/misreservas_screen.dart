@@ -120,11 +120,11 @@ class _MisReservasScreenState extends State<MisReservasScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const SizedBox(height: 6),
-                        _buildInfoRow("Hora Reserva:", reserva['hora_reserva']),
                         _buildInfoRow("Hora Cita:", reserva['hora_cita']),
+                        _buildInfoRow("Fecha Cita:", reserva['fecha_cita']),
                         _buildInfoRow(
                             "Centro Médico:", reserva['centro_medico']),
-                        _buildInfoRow("Fecha Cita:", reserva['fecha_cita']),
+                        _buildInfoRow("Hora Reserva:", reserva['hora_reserva']),
                       ],
                     ),
                     trailing: IconButton(

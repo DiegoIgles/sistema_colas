@@ -8,13 +8,14 @@ class DisponibilidadScreen extends StatefulWidget {
   final int grupoId;
   final String fecha;
   final int afiliadoId; // Agregar afiliadoId aquí
-
+  final int servicioId;
   const DisponibilidadScreen({
     Key? key,
     required this.centroMedicoId,
     required this.grupoId,
     required this.fecha,
-    required this.afiliadoId, // Agregar afiliadoId
+    required this.afiliadoId,
+    required this.servicioId, // Agregar afiliadoId
   }) : super(key: key);
 
   @override
@@ -93,8 +94,8 @@ class _DisponibilidadScreenState extends State<DisponibilidadScreen> {
                       MaterialPageRoute(
                         builder: (context) => ReservarCitacreen(
                           citaId: cita.id,
-                          afiliadoId:
-                              widget.afiliadoId, // Pasamos el afiliadoId
+                          afiliadoId: widget.afiliadoId,
+                          servicioId: widget.servicioId, // Pasamos el afiliadoId
                         ),
                       ),
                     );
